@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Gourmet Dashboard & Menu</title>
+    <title>✨ Gourmet Dashboard & Menu Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,6 +13,9 @@
             --card-bg: #1e293b;
             --text: #f8fafc;
             --text-muted: #94a3b8;
+            --danger: #ff6b6b;
+            --danger-hover: #fa5252;
+            --warning: #fcc419;
         }
 
         body {
@@ -23,39 +26,20 @@
             padding: 20px;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; }
         header h1 {
             font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(to right, #ff4757, #ff7f50);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin: 0;
         }
 
-        /* Contenedor de dos columnas para pantallas grandes */
-        .grid-main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
+        .grid-main { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        @media (min-width: 900px) { .grid-main { grid-template-columns: 380px 1fr; } }
 
-        @min-width: 900px {
-            .grid-main {
-                grid-template-columns: 380px 1fr;
-            }
-        }
-
-        /* Formularios Estilo Neomórfico/Moderno */
         .card-panel {
             background-color: var(--card-bg);
             padding: 30px;
@@ -65,149 +49,35 @@
             height: fit-content;
         }
 
-        .card-panel h2 {
-            font-size: 1.4rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
+        .card-panel h2 { font-size: 1.4rem; margin: 0 0 20px 0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: var(--text-muted); font-weight: 600; }
         input, textarea, select {
-            width: 100%;
-            padding: 12px 16px;
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 10px;
-            color: white;
-            font-family: inherit;
-            font-size: 0.95rem;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
+            width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155;
+            border-radius: 10px; color: white; font-family: inherit; box-sizing: border-box;
         }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary); }
 
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.2);
-        }
+        .btn-submit { background: var(--primary); color: white; border: none; padding: 14px; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%; }
+        .btn-submit:hover { background: var(--primary-hover); }
 
-        button {
-            width: 100%;
-            padding: 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-        }
-
-        button:hover {
-            background: var(--primary-hover);
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
-
-        /* Galería de Platillos "Perrona" */
-        .menu-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .food-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            border: 1px solid #334155;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .food-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 71, 87, 0.15);
-        }
-
-        .food-img-container {
-            width: 100%;
-            height: 200px;
-            position: relative;
-            background: #0f172a;
-        }
-
-        .food-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .badge-category {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(5px);
-            padding: 6px 12px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .food-info {
-            padding: 20px;
-        }
-
-        .food-title-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .food-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 0;
-            color: white;
-        }
-
-        .food-price {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #2ed573;
-            margin: 0;
-        }
-
-        .food-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        @media (min-width: 800px) {
-            .grid-main { grid-template-columns: 350px 1fr; }
-        }
+        /* Estilos de la Galería */
+        .menu-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .food-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; border: 1px solid #334155; display: flex; flex-direction: column; justify-content: space-between; }
+        .food-img-container { width: 100%; height: 180px; position: relative; background: #0f172a; }
+        .food-img { width: 100%; height: 100%; object-fit: cover; }
+        .badge-category { position: absolute; top: 15px; left: 15px; background: rgba(15, 23, 42, 0.8); padding: 4px 10px; border-radius: 30px; font-size: 0.75rem; color: var(--primary); font-weight: bold; }
+        .food-info { padding: 20px; flex-grow: 1; }
+        .food-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .food-title { font-size: 1.2rem; margin: 0; }
+        .food-price { font-size: 1.2rem; font-weight: 800; color: #2ed573; }
+        .food-desc { font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.4; }
+        
+        /* Botones de Acción */
+        .card-actions { padding: 15px 20px; background: rgba(15, 23, 42, 0.4); border-top: 1px solid #334155; display: flex; gap: 10px; }
+        .btn-edit { background: var(--warning); color: #0f172a; border: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; flex: 1; }
+        .btn-delete { background: var(--danger); color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; flex: 1; }
+        .btn-delete:hover { background: var(--danger-hover); }
     </style>
 </head>
 <body>
@@ -215,16 +85,18 @@
     <div class="container">
         <header>
             <h1>🍽️ GOURMET MANAGER PRO</h1>
-            <p style="color: var(--text-muted); margin: 0;">Administración de Menú Digital y Galería en Tiempo Real</p>
+            <p style="color: var(--text-muted); margin: 5px 0 0 0;">Gestión CRUD Completa (Crear, Leer, Editar y Eliminar)</p>
         </header>
 
         <div class="grid-main">
             <div class="card-panel">
-                <h2>Nuevo Platillo</h2>
+                <h2 id="form-title">Nuevo Platillo</h2>
                 <form id="formPlatillo">
+                    <input type="hidden" id="platilloId">
+
                     <div class="form-group">
                         <label for="nombre">Nombre del Platillo</label>
-                        <input type="text" id="nombre" placeholder="Ej. Hamburguesa de la Casa" required>
+                        <input type="text" id="nombre" required>
                     </div>
                     
                     <div class="form-group">
@@ -238,28 +110,27 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="precio">Precio de Venta ($)</label>
-                        <input type="number" id="precio" placeholder="Ej. 185" required>
+                        <label for="precio">Precio ($)</label>
+                        <input type="number" id="precio" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="imagen">URL de la Imagen de la Galería</label>
-                        <input type="url" id="imagen" placeholder="https://enlace-de-la-foto.com/imagen.jpg">
+                        <label for="imagen">URL de la Imagen</label>
+                        <input type="url" id="imagen" placeholder="https://...">
                     </div>
 
                     <div class="form-group">
-                        <label for="descripcion">Descripción / Ingredientes</label>
-                        <textarea id="descripcion" rows="3" placeholder="Ej. Doble carne angus, queso cheddar fundido y aderezo secreto..." required></textarea>
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" rows="3" required></textarea>
                     </div>
 
-                    <button type="submit">Publicar en Galería</button>
+                    <button type="submit" class="btn-submit" id="btn-submit-text">Publicar Platillo</button>
                 </form>
             </div>
 
             <div>
-                <h2 style="font-size: 1.5rem; margin-top: 0; margin-bottom: 25px;">👨‍🍳 Galería de Menú en Vivo</h2>
-                <div class="menu-gallery" id="galeriaPlatillos">
-                    </div>
+                <h2 style="font-size: 1.5rem; margin: 0 0 20px 0;">👨‍🍳 Galería de Menú</h2>
+                <div class="menu-gallery" id="galeriaPlatillos"></div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 // REEMPLAZA ESTA URL POR TU URL REAL DE RENDER (Mantén el /platillos al final)
-const API_URL = "https://restaurante-backend-xyz.onrender.com/platillos";
+const API_URL = "https://restaurante-backend-185g.onrender.com/platillos";
 
 // Función para renderizar la galería visual premium desde MongoDB Atlas
 async function cargarGaleriaPremium() {
