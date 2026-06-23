@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Restaurante</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #faf4ee; color: #4a3b32; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h2, h3 { text-align: center; color: #d9534f; }
+        input, select, button { width: 100%; padding: 12px; margin: 8px 0; box-sizing: border-box; border-radius: 6px; border: 1px solid #ddd; }
+        button { background: #d9534f; color: white; border: none; cursor: pointer; font-weight: bold; font-size: 16px; }
+        button:hover { background: #c9302c; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 10px; }
+        th, td { border: 1px solid #eee; padding: 12px; text-align: left; }
+        th { background-color: #d9534f; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🍽️ Administración del Menú Digital</h2>
+        
+        <div class="card">
+            <h3>Agregar Nuevo Platillo</h3>
+            <form id="formPlatillo">
+                <input type="text" id="nombre" placeholder="Nombre del platillo (ej. Tacos al pastor)" required>
+                <input type="number" id="precio" placeholder="Precio ($)" required>
+                <select id="categoria" required>
+                    <option value="">-- Selecciona Categoría --</option>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Plato Fuerte">Plato Fuerte</option>
+                    <option value="Bebida">Bebida</option>
+                    <option value="Postre">Postre</option>
+                </select>
+                <button type="submit">Guardar en el Menú</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Menú Vigente</h3>
+            <table>
+                <thead>
+                    <tr><th>Platillo</th><th>Categoría</th><th>Precio</th></tr>
+                </thead>
+                <tbody id="tablaPlatillos"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
